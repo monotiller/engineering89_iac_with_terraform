@@ -18,7 +18,7 @@ resource "aws_instance" "app_instance" {
   instance_type = "t2.micro"
   associate_public_ip_address = true
   tags = {
-    "Name" = "eng89_madeline_terraform2"
+    "Name" = "eng89_madeline_terraform"
   }
 }
 

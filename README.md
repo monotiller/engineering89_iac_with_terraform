@@ -15,12 +15,12 @@ provider "aws" {
 - Resource aws_ex2_instance, name it as eng89_madeline_terraform, ami, type of instance, with or without ip
 ```terraform
 resource "aws_instance" "app_instance" {
-  key_name = "eng89_madeline_rsa" # Specifying an already uploaded key
+  key_name = "your_key_pair" # Specifying an already uploaded key
   ami = "ami-0943382e114f188e8" # Which ami we want to launch
   instance_type = "t2.micro" # Size of instance
   associate_public_ip_address = true
   tags = { # Optional tags
-    "Name" = "eng89_madeline_terraform2"
+    "Name" = "eng89_madeline_terraform"
   }
 }
 ```
