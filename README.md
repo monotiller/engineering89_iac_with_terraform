@@ -29,4 +29,9 @@ resource "aws_instance" "app_instance" {
 - Once we are happy and the outcome is green we could run `terraform apply`
 
 ## What is Terraform?
-Allows
+Configuration management software that allows you to manage external resources (such as a cloud provider). It allows you to declare a desired state and then sets it up for you.
+
+The benefits are that it speeds up the process of creating instances whilst using pre-determined configuration settings (keys, images, etc.).
+
+## IAC configuration management vs orchestration
+Configuration management is looking at the initialisation of instances where as orchestration is dealing with instances that are already set up and running
