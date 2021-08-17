@@ -9,4 +9,19 @@ resource "aws_instance" "app_instance" {
   tags = {
     "Name" = "eng89_madeline_terraform" # Just a name tag
   }
+
+  connection {
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file(var.aws_key_path)
+      host        = self.public_ip
+    }
+
+  provisioner "remote-exec" {
+  	inline = [
+            "git clone ${var.node_github_repository}",
+  					"cd engineering89_vagrant/src",
+  					"sh provision_web.sh"
+  					]
+  }
 }

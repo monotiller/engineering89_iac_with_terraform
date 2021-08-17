@@ -16,7 +16,7 @@ variable "aws_key_path" {
 }
 
 variable "aws_ami_id" {
-  default = "ami-041c8273d4ac990b4"
+  default = "ami-0943382e114f188e8"
 }
 
 variable "aws_vpc_name" {
@@ -45,4 +45,8 @@ variable "my_ip_address" {
 
 variable "aws_security_group_name" {
   default = "eng89_madeline_terraform_security_group"
+}
+
+variable "node_github_repository" {
+  default = "https://github.com/monotiller/engineering89_vagrant.git"
 }
