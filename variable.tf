@@ -30,3 +30,15 @@ variable "aws_subnet_name" {
 variable "aws_igw_name" {
   default = "eng89_madeline_terraform_igw"
 }
+
+variable "aws_route_table_name" {
+  default = "eng89_madeline_terraform_route_table"
+}
+
+variable "my_ip_address" {
+  default = "0.0.0.0/0"
+}
+
+variable "aws_security_group_name" {
+  default = "eng89_madeline_terraform_security_group"
+}
