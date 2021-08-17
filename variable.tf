@@ -16,7 +16,7 @@ variable "aws_key_path" {
 }
 
 variable "aws_ami_id" {
-  default = "ami-0943382e114f188e8"
+  default = "ami-041c8273d4ac990b4"
 }
 
 variable "aws_vpc_name" {

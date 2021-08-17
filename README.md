@@ -62,7 +62,7 @@ Make sure to read the [documentation](https://learn.hashicorp.com/tutorials/terr
 6. Run `terraform plan` to make sure there are no errors
 7. Run `terraform apply` to create your instance!
 
-### VPC
+### Networking
 ![](images/image3.png)
 For comlpete instructions and information into what a VPC is, I recommend reading through my [VPC Setup](https://github.com/monotiller/engineering89_vpc_setup) repo. But here are the relevant parts to this configuration:
 
@@ -76,7 +76,7 @@ I am using the CIDR block of `10.112.0.0/16`. These are also my security group r
   | Custom TCP | TCP (6)  | `1024 - 65535` | `0.0.0.0/0`    | Allow      |    
 - Outbound: allow all traffic
 
-Let's look at some configurations:
+Let's look at some configurations. First in `vpc.tf` we have:
 - VPC configuration
   ```terraform
     resource "aws_vpc" "prod-vpc" {
@@ -104,6 +104,7 @@ Let's look at some configurations:
       }
     }
   ```
+Then in `network.tf`:
 - Internet gateway
   ```terraform
     resource "aws_internet_gateway" "prod-igw" {
