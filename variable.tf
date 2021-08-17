@@ -3,6 +3,10 @@
 variable "aws_region" {
   default = "eu-west-1"
 }
+
+variable "aws_subnet_region" {
+  default = "eu-west-1a"
+}
 variable "aws_key_name" {
   default = "eng89_madeline_rsa"
 }
@@ -20,7 +24,7 @@ variable "aws_vpc_name" {
 }
 
 variable "aws_cidr_block" {
-  default = "10.112.0.0/16"
+  default = "10.252.0.0/16"
 }
 
 variable "aws_subnet_name" {

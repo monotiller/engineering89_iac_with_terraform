@@ -15,7 +15,7 @@ IaC has two parts:
 ## Why Terraform?
 1. Open source: Anyone can contribute and share the code. With a large community new features can be easily added in
 2. Agent-less: You don’t need any specialised tools for it to run on the server side, as long as you run it from your machine everything will proceed as normal
-3. Immutable infrastructure: If changes are made to already existing instances then instead of creating a new instance Terraform gives you the option to update the existing instances with the new configuration
+3. Immutable infrastructure: If changes are made to already existing instances then instead of creating a new instance Terraform gives you the option to update the existing instances with the new configuration 
 
 ![](images/image2.png)
 ￼
