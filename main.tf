@@ -36,7 +36,7 @@ resource "aws_vpc" "prod-vpc" {
 }
 
 resource "aws_subnet" "prod-subnet-public-1" {
-  vpc_id = var.aws_vpc_name
+  vpc_id = var.aws_vpc_name.id
   cidr_block = var.aws_cidr_block
   map_public_ip_on_launch = true
   availability_zone = var.aws_region
@@ -47,7 +47,10 @@ resource "aws_subnet" "prod-subnet-public-1" {
 }
 
 resource "aws_internet_gateway" "prod-igw" {
-  
+  vpc_id = var.aws_vpc_name.id
+  tags = {
+    Name = var.aws_igw_name
+  }
 }
 
 # Most commonly used commands for terraform:

@@ -26,3 +26,7 @@ variable "aws_cidr_block" {
 variable "aws_subnet_name" {
   default = "eng89_madeline_terraform_subnet"
 }
+
+variable "aws_igw_name" {
+  default = "eng89_madeline_terraform_igw"
+}
