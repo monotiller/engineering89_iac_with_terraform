@@ -52,32 +52,51 @@ resource "aws_route_table_association" "prod-crta-public-subnet-1" {
   route_table_id = aws_route_table.prod-public-crt.id
 }
 
-resource "aws_security_group_rule" "my_ssh" {
-  type              = "ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-  cidr_blocks       = [var.my_ip_address]
-  security_group_id = aws_security_group.prod-public-crt.id
-}
+resource "aws_security_group" "prod-public-sg" {
+    name = var.aws_security_group_name
+    description = "Our secruity group"
+    vpc_id = aws_vpc.prod-vpc.id
+    # All traffic outbound
+    egress { 
+        from_port = 0
+        to_port = 0
+        protocol = -1
+        cidr_blocks = ["0.0.0.0/0"]
+    }
 
-resource "aws_security_group_rule" "vpc_access" {
-  type              = "ingress"
-  from_port         = 0
-  to_port           = 0
-  protocol          = -1
-  cidr_blocks       = [var.aws_cidr_block]
-  security_group_id = aws_security_group.prod-public-crt.id
+    # Allowing for us to SSH in
+    ingress { 
+        from_port = 22
+        to_port = 22
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    # Allows anyone to connect via HTTP
+    ingress { 
+        from_port = 80
+        to_port = 80
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    # Allows anyone to connect to the node app
+    ingress { 
+        from_port = 3000
+        to_port = 3000
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    tags = {
+        "Name" = var.aws_security_group_name
+    }
 }
 
 resource "aws_instance" "app_instance" {
-  key_name = var.aws_key_name
-  # aws_key_path = var.aws_key_path
-  ami = var.aws_ami_id
-  instance_type = "t2.micro"
-  associate_public_ip_address = true
+  key_name = var.aws_key_name # The name of a key already uploaded to AWS
+  ami = var.aws_ami_id # The ami that we want to use. I'm using the default Ubuntu 18.04 ami
+  instance_type = "t2.micro" # The type of instance you want to run, `t2.micro` is on the free plan
+  associate_public_ip_address = true # Set this to false if you don't want a public IP available
   tags = {
-    "Name" = "eng89_madeline_terraform"
+    "Name" = "eng89_madeline_terraform" # Just a name tag
   }
 }
 
