@@ -54,6 +54,7 @@ resource "aws_instance" "app_instance" {
             "cd app",
             "sudo npm install",
             "sudo systemctl restart nginx",
+            "export DB_HOST=mongodb://${aws_instance.db_instance.public_ip}:27017/posts >> ~/.bashrc",
             "node seeds/seed.js",
             "pm2 start app.js",
   					]
