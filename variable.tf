@@ -16,7 +16,7 @@ variable "aws_key_path" {
 }
 
 variable "aws_ami_id" {
-  default = "ami-0943382e114f188e8"
+  default = "ami-0a8e758f5e873d1c1"
 }
 
 variable "aws_vpc_name" {
@@ -48,5 +48,5 @@ variable "aws_security_group_name" {
 }
 
 variable "node_github_repository" {
-  default = "https://github.com/monotiller/engineering89_vagrant.git"
+  default = "https://github.com/monotiller/engineering89_multi_server_automation.git"
 }
